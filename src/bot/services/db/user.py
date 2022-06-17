@@ -1,4 +1,4 @@
-# from news_agregator.models import TelegramUser
+# from store.models import TelegramUser
 from asgiref.sync import sync_to_async
 
 
