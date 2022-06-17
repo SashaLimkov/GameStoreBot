@@ -1,3 +1,4 @@
+from store.models import LinkGameList
 # from store.models import TelegramUser
 from asgiref.sync import sync_to_async
 
@@ -16,3 +17,8 @@ from asgiref.sync import sync_to_async
 #         ).save()
 #     except Exception:
 #         return select_user(int(user_id))
+
+
+@sync_to_async
+def get_all_links():
+    return LinkGameList.objects.all()

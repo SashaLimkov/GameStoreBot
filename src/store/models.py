@@ -22,6 +22,10 @@ class TelegramUser(TimeBasedModel):
 
 
 class LinkGameList(TimeBasedModel):
+    class Meta:
+        verbose_name = "Ссылка"
+        verbose_name_plural = "Ссылки"
+
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True, verbose_name="LinkName")
     link = models.CharField(max_length=2000, unique=True, verbose_name="Link")

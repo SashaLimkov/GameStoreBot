@@ -14,5 +14,5 @@ async def game_menu(call: types.CallbackQuery, state: FSMContext):
         chat_id=call.message.chat.id,
         message_id=call.message.message_id,
         text=td.GAMES_MM,
-        # reply_markup=
+        reply_markup=await ik.get_games_menu()
     )
