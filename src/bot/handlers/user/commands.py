@@ -20,7 +20,8 @@ async def send_main_menu(message: types.Message, state: FSMContext):
             chat_id=message.chat.id,
             message_id=message.message_id,
             text=td.START_MESSAGE,
-            reply_markup=await ik.get_main_menu()
+            reply_markup=await ik.get_main_menu(),
+            disable_web_page_preview=True
         )
     except MessageToEditNotFound:
         await new_mm(message=message, state=state)
@@ -39,9 +40,14 @@ async def new_mm(message: types.Message, state: FSMContext):
     mes = await bot.send_message(
         chat_id=message.chat.id,
         text=td.START_MESSAGE,
-        reply_markup=await ik.get_main_menu()
+        reply_markup=await ik.get_main_menu(),
+        disable_web_page_preview=True
     )
     await state.update_data(
         mes_to_del=[mes.message_id]
     )
     await UserState.static.set()
+
+
+async def get_mm(call: types.CallbackQuery, state: FSMContext):
+    await send_main_menu(message=call.message, state=state)

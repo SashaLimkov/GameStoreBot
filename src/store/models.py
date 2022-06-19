@@ -29,3 +29,13 @@ class LinkGameList(TimeBasedModel):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True, verbose_name="LinkName")
     link = models.CharField(max_length=2000, unique=True, verbose_name="Link")
+
+
+class ConsultantGroup(TimeBasedModel):
+    class Meta:
+        verbose_name = "Группа консультанта"
+        verbose_name_plural = "Группа консультантов"
+
+    id = models.AutoField(primary_key=True)
+    chanel_id = models.BigIntegerField(unique=True, verbose_name="ID Канала консультантов")
+    chat_id = models.BigIntegerField(unique=True, verbose_name="ID Чата консультантов")
