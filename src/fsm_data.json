@@ -4,7 +4,7 @@
             "state": "UserState:static",
             "data": {
                 "mes_to_del": [
-                    2662
+                    3104
                 ],
                 "name": "Main"
             },
@@ -13,10 +13,10 @@
     },
     "585444036": {
         "585444036": {
-            "state": "UserState:static",
+            "state": "UserState:add_link_name",
             "data": {
                 "mes_to_del": [
-                    2560
+                    2721
                 ]
             },
             "bucket": {}
@@ -42,6 +42,17 @@
         "777000": {
             "state": null,
             "data": {},
+            "bucket": {}
+        }
+    },
+    "595632169": {
+        "595632169": {
+            "state": "UserState:static",
+            "data": {
+                "mes_to_del": [
+                    2713
+                ]
+            },
             "bucket": {}
         }
     }

@@ -7,34 +7,41 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='LinkGameList',
+            name="LinkGameList",
             fields=[
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=100, unique=True, verbose_name='LinkName')),
-                ('link', models.CharField(max_length=2000, unique=True, verbose_name='Link')),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                (
+                    "name",
+                    models.CharField(
+                        max_length=100, unique=True, verbose_name="LinkName"
+                    ),
+                ),
+                (
+                    "link",
+                    models.CharField(max_length=2000, unique=True, verbose_name="Link"),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='TelegramUser',
+            name="TelegramUser",
             fields=[
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('user_id', models.BigIntegerField(unique=True, verbose_name='UserID')),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("user_id", models.BigIntegerField(unique=True, verbose_name="UserID")),
             ],
             options={
-                'verbose_name': 'Пользователь',
-                'verbose_name_plural': 'Пользователи',
+                "verbose_name": "Пользователь",
+                "verbose_name_plural": "Пользователи",
             },
         ),
     ]

@@ -8,8 +8,9 @@ class TimeBasedModel(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
+        verbose_name="Дата создания"
     )
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
 
 class TelegramUser(TimeBasedModel):
@@ -18,7 +19,7 @@ class TelegramUser(TimeBasedModel):
         verbose_name_plural = "Пользователи"
 
     id = models.AutoField(primary_key=True)
-    user_id = models.BigIntegerField(unique=True, verbose_name="UserID")
+    user_id = models.BigIntegerField(unique=True, verbose_name="ID пользователя")
 
 
 class LinkGameList(TimeBasedModel):
@@ -26,9 +27,12 @@ class LinkGameList(TimeBasedModel):
         verbose_name = "Ссылка"
         verbose_name_plural = "Ссылки"
 
+    def __str__(self):
+        return self.name
+
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100, unique=True, verbose_name="LinkName")
-    link = models.CharField(max_length=2000, unique=True, verbose_name="Link")
+    name = models.CharField(max_length=100, unique=True, verbose_name="Название ссылки")
+    link = models.CharField(max_length=2000, unique=True, verbose_name="Ссылка")
 
 
 class ConsultantGroup(TimeBasedModel):
@@ -37,5 +41,22 @@ class ConsultantGroup(TimeBasedModel):
         verbose_name_plural = "Группа консультантов"
 
     id = models.AutoField(primary_key=True)
-    chanel_id = models.BigIntegerField(unique=True, verbose_name="ID Канала консультантов")
+    chanel_id = models.BigIntegerField(
+        unique=True, verbose_name="ID Канала консультантов"
+    )
     chat_id = models.BigIntegerField(unique=True, verbose_name="ID Чата консультантов")
+
+
+class TelegramText(TimeBasedModel):
+    class Meta:
+        verbose_name = "Тексты бота"
+        verbose_name_plural = "Текст из бота"
+
+    def __str__(self):
+        return self.title
+
+    title = models.CharField(
+        max_length=150, verbose_name="Наименование"
+    )
+    content = models.TextField(blank=True, verbose_name="Контент")
+    ordering = ["-created_at", "title"]

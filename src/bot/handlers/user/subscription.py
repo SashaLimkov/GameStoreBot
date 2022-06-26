@@ -10,20 +10,24 @@ from bot.data import text_data as td
 from bot.keyboards import inline as ik
 
 
-async def subscriptions_menu(call: types.CallbackQuery, callback_data: dict, state: FSMContext):
+async def subscriptions_menu(
+    call: types.CallbackQuery, callback_data: dict, state: FSMContext
+):
     await bot.edit_message_text(
         chat_id=call.message.chat.id,
         message_id=call.message.message_id,
-        text=td.SUBSCRIPTION_MM,
+        text=await td.SUBSCRIPTION_MM(),
         reply_markup=await ik.get_subs_menu(callback_data),
-        disable_web_page_preview=True
+        disable_web_page_preview=True,
     )
 
 
-async def get_subs_list(call: types.CallbackQuery, callback_data: dict, state: FSMContext):
+async def get_subs_list(
+    call: types.CallbackQuery, callback_data: dict, state: FSMContext
+):
     await bot.edit_message_text(
         chat_id=call.message.chat.id,
         message_id=call.message.message_id,
-        text=td.SUBSCRIPTIONS_LIST,
-        reply_markup=await ik.back(callback_data)
+        text=await td.SUBSCRIPTIONS_LIST(),
+        reply_markup=await ik.back(callback_data),
     )

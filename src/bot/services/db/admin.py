@@ -5,9 +5,7 @@ from store.models import LinkGameList
 @sync_to_async
 def add_link(name, link):
     try:
-        return LinkGameList(
-            name=name, link=link
-        ).save()
+        return LinkGameList(name=name, link=link).save()
     except Exception as e:
         print(e)
 

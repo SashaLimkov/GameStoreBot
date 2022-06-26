@@ -14,15 +14,17 @@ async def game_menu(call: types.CallbackQuery, callback_data: dict, state: FSMCo
     await bot.edit_message_text(
         chat_id=call.message.chat.id,
         message_id=call.message.message_id,
-        text=td.GAMES_MM,
+        text=await td.GAMES_MM(),
         reply_markup=await ik.get_games_menu(callback_data),
     )
 
 
-async def get_instruction(call: types.CallbackQuery, callback_data: dict, state: FSMContext):
+async def get_instruction(
+    call: types.CallbackQuery, callback_data: dict, state: FSMContext
+):
     await bot.edit_message_text(
         chat_id=call.message.chat.id,
         message_id=call.message.message_id,
-        text=td.GAME_INSTRUCTION_TEXT,
-        reply_markup=await ik.back(callback_data)
+        text=await td.GAME_INSTRUCTION_TEXT(),
+        reply_markup=await ik.back(callback_data),
     )

@@ -26,28 +26,21 @@ async def add_link_name(call: types.CallbackQuery, state: FSMContext):
     mes = await bot.edit_message_text(
         chat_id=call.message.chat.id,
         message_id=call.message.message_id,
-        text=td.ADD_LINK_NAME
+        text=td.ADD_LINK_NAME,
     )
     mes_to_del = [mes.message_id]
     await UserState.add_link_name.set()
-    await state.update_data(
-        mes_to_del=mes_to_del
-    )
+    await state.update_data(mes_to_del=mes_to_del)
 
 
 async def add_link(message: types.Message, state: FSMContext):
     await state.update_data(name=message.text)
     data = await state.get_data()
     mes_to_del = data.get("mes_to_del")
-    mes = await bot.send_message(
-        chat_id=message.chat.id,
-        text=td.ADD_LINK
-    )
+    mes = await bot.send_message(chat_id=message.chat.id, text=td.ADD_LINK)
     mes_to_del += [mes.message_id, message.message_id]
     await UserState.add_link.set()
-    await state.update_data(
-        mes_to_del=mes_to_del
-    )
+    await state.update_data(mes_to_del=mes_to_del)
 
 
 async def finish_adding_link(message: types.Message, state: FSMContext):
@@ -64,13 +57,10 @@ async def finish_adding_link(message: types.Message, state: FSMContext):
     else:
         mes_to_del = data.get("mes_to_del")
         mes = await bot.send_message(
-            chat_id=message.chat.id,
-            text="пришлите корректную ссылку"
+            chat_id=message.chat.id, text="пришлите корректную ссылку"
         )
         mes_to_del += [mes.message_id, message.message_id]
-        await state.update_data(
-            mes_to_del=mes_to_del
-        )
+        await state.update_data(mes_to_del=mes_to_del)
 
 
 async def show_links(call: types.CallbackQuery, state: FSMContext):
@@ -98,15 +88,12 @@ async def confirm_delete(call: types.CallbackQuery, state: FSMContext):
         chat_id=call.message.chat.id,
         message_id=call.message.message_id,
         text=f"Вы уверены что хотите удалить {hlink('этот', link.link)} список?",
-        reply_markup=await ik.confirm_delete(link_id)
+        reply_markup=await ik.confirm_delete(link_id),
     )
 
 
 async def delete_link(call: types.CallbackQuery, state: FSMContext):
     link_id = call.data.replace("confirm_", "")
     await admin_db.delete_link(link_id)
-    await call.answer(
-        text="Список был удален",
-        show_alert=True
-    )
+    await call.answer(text="Список был удален", show_alert=True)
     await a_p(call=call, state=state)

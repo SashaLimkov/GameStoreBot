@@ -19,9 +19,9 @@ async def send_main_menu(message: types.Message, state: FSMContext):
         await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=message.message_id,
-            text=td.START_MESSAGE,
+            text=await td.START_MESSAGE(),
             reply_markup=await ik.get_main_menu(),
-            disable_web_page_preview=True
+            disable_web_page_preview=True,
         )
     except MessageToEditNotFound:
         await new_mm(message=message, state=state)
@@ -31,21 +31,16 @@ async def send_main_menu(message: types.Message, state: FSMContext):
 
 async def new_mm(message: types.Message, state: FSMContext):
     try:
-        await deleter.delete_bot_messages(
-            user_id=message.chat.id,
-            state=state
-        )
+        await deleter.delete_bot_messages(user_id=message.chat.id, state=state)
     except Exception as e:
         print(e)
     mes = await bot.send_message(
         chat_id=message.chat.id,
-        text=td.START_MESSAGE,
+        text=await td.START_MESSAGE(),
         reply_markup=await ik.get_main_menu(),
-        disable_web_page_preview=True
+        disable_web_page_preview=True,
     )
-    await state.update_data(
-        mes_to_del=[mes.message_id]
-    )
+    await state.update_data(mes_to_del=[mes.message_id])
     await UserState.static.set()
 
 

@@ -6,22 +6,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('store', '0002_alter_linkgamelist_options'),
+        ("store", "0002_alter_linkgamelist_options"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ConsultantGroup',
+            name="ConsultantGroup",
             fields=[
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('chanel_id', models.BigIntegerField(unique=True, verbose_name='ID Канала консультантов')),
-                ('chat_id', models.BigIntegerField(unique=True, verbose_name='ID Чата консультантов')),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                (
+                    "chanel_id",
+                    models.BigIntegerField(
+                        unique=True, verbose_name="ID Канала консультантов"
+                    ),
+                ),
+                (
+                    "chat_id",
+                    models.BigIntegerField(
+                        unique=True, verbose_name="ID Чата консультантов"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Группа консультанта',
-                'verbose_name_plural': 'Группа консультантов',
+                "verbose_name": "Группа консультанта",
+                "verbose_name_plural": "Группа консультантов",
             },
         ),
     ]
