@@ -70,7 +70,7 @@ async def delete_commands(message: types.Message, state: FSMContext):
 
 
 async def set_consult_group(message: types.Message, state: FSMContext):
-    chanel_id = message.sender_chat.id
+    chanel_id = message.reply_to_message.sender_chat.id
     chat_id = message.chat.id
     await add_consult_group(chat_id=chat_id, chanel_id=chanel_id)
     await bot.send_message(

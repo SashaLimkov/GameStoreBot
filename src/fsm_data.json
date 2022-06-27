@@ -1,16 +1,4 @@
 {
-    "390959255": {
-        "390959255": {
-            "state": "UserState:static",
-            "data": {
-                "mes_to_del": [
-                    3104
-                ],
-                "name": "Main"
-            },
-            "bucket": {}
-        }
-    },
     "585444036": {
         "585444036": {
             "state": "UserState:add_link_name",
@@ -51,6 +39,47 @@
             "data": {
                 "mes_to_del": [
                     2713
+                ]
+            },
+            "bucket": {}
+        }
+    },
+    "390959255": {
+        "390959255": {
+            "state": "UserState:wait_until_complete",
+            "data": {
+                "mes_to_del": [
+                    3281,
+                    3283
+                ]
+            },
+            "bucket": {}
+        }
+    },
+    "-1001654771206": {
+        "777000": {
+            "state": null,
+            "data": {},
+            "bucket": {}
+        },
+        "390959255": {
+            "state": null,
+            "data": {},
+            "bucket": {}
+        },
+        "585444036": {
+            "state": null,
+            "data": {},
+            "bucket": {}
+        }
+    },
+    "590664623": {
+        "590664623": {
+            "state": "UserState:wait_until_complete",
+            "data": {
+                "mes_to_del": [
+                    3273,
+                    3275
                 ]
             },
             "bucket": {}

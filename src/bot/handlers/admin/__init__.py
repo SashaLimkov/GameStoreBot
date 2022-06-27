@@ -1,14 +1,17 @@
 from aiogram import Dispatcher
 from aiogram.dispatcher import filters
+from aiogram.types import ContentTypes
 
 from bot.config.config import ADMINS
 from bot.filters.admin import AdminFilter
-from bot.handlers.admin import commands, links
+from bot.filters.private import PrivateChatFilter
+from bot.handlers.admin import commands, links, sell_process
 from bot.states import UserState
 
 
 def setup(dp: Dispatcher):
     dp.filters_factory.bind(AdminFilter)
+    dp.filters_factory.bind(PrivateChatFilter)
     dp.register_message_handler(
         commands.set_consult_group,
         filters.Command("setup_cg"),
@@ -47,4 +50,17 @@ def setup(dp: Dispatcher):
     )
     dp.register_message_handler(
         links.finish_adding_link, is_admin=True, state=UserState.add_link
+    )
+    dp.register_message_handler(sell_process.add_admin_menu, lambda message: "forward_from_message_id" in message)
+    dp.register_message_handler(
+        sell_process.add_admin_text_message,
+        lambda message: "reply_to_message" in message,
+        state="*",
+    )
+    dp.register_message_handler(
+        sell_process.add_admin_photo_message,
+        lambda message: "reply_to_message" in message,
+        content_types=ContentTypes.PHOTO,
+        state="*",
+
     )

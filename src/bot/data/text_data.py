@@ -22,6 +22,18 @@ async def GAME_INSTRUCTION_TEXT():
     return await t_db.get_content_by_title("Инструкция по активации ключей")
 
 
+async def BUY_GAME():
+    return await t_db.get_content_by_title("Ожидание консультанта")
+
+
+async def POST_FORM() -> str:
+    return await t_db.get_content_by_title("Форма заявки на покупку")
+
+
+async def CONSULTER_INSTRUCTION() -> str:
+    return await t_db.get_content_by_title("Инструкция для консультанта")
+
+
 ADMIN_PANEL = (
     f"Чтобы добавить новый список, нужно создать его {hlink('ЗДЕСЬ', 'https://telegra.ph/')}\n"
     f"{hlink('ГАЙД', 'https://kj.media/trends/guide-telegraph/')} по телеграфу.\n"

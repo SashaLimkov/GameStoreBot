@@ -7,6 +7,7 @@ class UsersAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "user_id",
+        "name",
         "created_at",
         "updated_at",
     )

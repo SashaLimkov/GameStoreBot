@@ -7,10 +7,13 @@ from bot.states.user import UserState
 from bot.utils import deleter
 from bot.data import text_data as td
 from bot.keyboards import inline as ik
+from bot.services.db import user as u_db
 
 
 async def cmd_start(message: types.Message, state: FSMContext):
     await deleter.delete_mes(message.chat.id, message.message_id)
+    print(message)
+    await u_db.add_user(message.chat.id, message.from_user.first_name)
     await send_main_menu(message=message, state=state)
 
 
@@ -23,6 +26,7 @@ async def send_main_menu(message: types.Message, state: FSMContext):
             reply_markup=await ik.get_main_menu(),
             disable_web_page_preview=True,
         )
+        await UserState.static.set()
     except MessageToEditNotFound:
         await new_mm(message=message, state=state)
     except MessageCantBeEdited:

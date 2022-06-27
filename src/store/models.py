@@ -18,8 +18,29 @@ class TelegramUser(TimeBasedModel):
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
 
-    id = models.AutoField(primary_key=True)
+    def __str__(self):
+        return self.name
+
+    name = models.CharField(max_length=255, verbose_name="Имя пользователя")
     user_id = models.BigIntegerField(unique=True, verbose_name="ID пользователя")
+
+
+class UserRequest(TimeBasedModel):
+    class Meta:
+        verbose_name = "Заявка на покупку"
+        verbose_name_plural = "Заявки на покупку"
+
+    user = models.ForeignKey(
+        TelegramUser,
+        on_delete=models.CASCADE,
+        verbose_name="Пользователь"
+    )
+    question = models.CharField(max_length=5000, verbose_name="Запрос")
+    state = models.CharField(
+        max_length=100, verbose_name="Состояние", default="Открытый вопрос"
+    )
+    channel_mes_id = models.BigIntegerField()
+    chat_mes_id = models.BigIntegerField()
 
 
 class LinkGameList(TimeBasedModel):
