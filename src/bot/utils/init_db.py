@@ -11,10 +11,12 @@ def get_text():
     for text in text_obj_lst:
         titles.append(text.title)
         contents.append(text.content)
-    res.update({
-        "title": titles,
-        "content": contents,
-    })
+    res.update(
+        {
+            "title": titles,
+            "content": contents,
+        }
+    )
     r = json.dumps(res)
     with open("res.json", "w", encoding="utf-8") as file:
         file.write(r)

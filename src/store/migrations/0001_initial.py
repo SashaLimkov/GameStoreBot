@@ -8,81 +8,187 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='ConsultantGroup',
+            name="ConsultantGroup",
             fields=[
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Дата обновления')),
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('chanel_id', models.BigIntegerField(unique=True, verbose_name='ID Канала консультантов')),
-                ('chat_id', models.BigIntegerField(unique=True, verbose_name='ID Чата консультантов')),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Дата создания"
+                    ),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Дата обновления"),
+                ),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                (
+                    "chanel_id",
+                    models.BigIntegerField(
+                        unique=True, verbose_name="ID Канала консультантов"
+                    ),
+                ),
+                (
+                    "chat_id",
+                    models.BigIntegerField(
+                        unique=True, verbose_name="ID Чата консультантов"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Группа консультанта',
-                'verbose_name_plural': 'Группа консультантов',
+                "verbose_name": "Группа консультанта",
+                "verbose_name_plural": "Группа консультантов",
             },
         ),
         migrations.CreateModel(
-            name='LinkGameList',
+            name="LinkGameList",
             fields=[
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Дата обновления')),
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=100, unique=True, verbose_name='Название ссылки')),
-                ('link', models.CharField(max_length=2000, unique=True, verbose_name='Ссылка')),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Дата создания"
+                    ),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Дата обновления"),
+                ),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                (
+                    "name",
+                    models.CharField(
+                        max_length=100, unique=True, verbose_name="Название ссылки"
+                    ),
+                ),
+                (
+                    "link",
+                    models.CharField(
+                        max_length=2000, unique=True, verbose_name="Ссылка"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Ссылка',
-                'verbose_name_plural': 'Ссылки',
+                "verbose_name": "Ссылка",
+                "verbose_name_plural": "Ссылки",
             },
         ),
         migrations.CreateModel(
-            name='TelegramText',
+            name="TelegramText",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Дата обновления')),
-                ('title', models.CharField(max_length=150, verbose_name='Наименование')),
-                ('content', models.TextField(blank=True, verbose_name='Контент')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Дата создания"
+                    ),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Дата обновления"),
+                ),
+                (
+                    "title",
+                    models.CharField(max_length=150, verbose_name="Наименование"),
+                ),
+                ("content", models.TextField(blank=True, verbose_name="Контент")),
             ],
             options={
-                'verbose_name': 'Тексты бота',
-                'verbose_name_plural': 'Текст из бота',
+                "verbose_name": "Тексты бота",
+                "verbose_name_plural": "Текст из бота",
             },
         ),
         migrations.CreateModel(
-            name='TelegramUser',
+            name="TelegramUser",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Дата обновления')),
-                ('name', models.CharField(max_length=255, verbose_name='Имя пользователя')),
-                ('user_id', models.BigIntegerField(unique=True, verbose_name='ID пользователя')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Дата создания"
+                    ),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Дата обновления"),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, verbose_name="Имя пользователя"),
+                ),
+                (
+                    "user_id",
+                    models.BigIntegerField(unique=True, verbose_name="ID пользователя"),
+                ),
             ],
             options={
-                'verbose_name': 'Пользователь',
-                'verbose_name_plural': 'Пользователи',
+                "verbose_name": "Пользователь",
+                "verbose_name_plural": "Пользователи",
             },
         ),
         migrations.CreateModel(
-            name='UserRequest',
+            name="UserRequest",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Дата обновления')),
-                ('question', models.CharField(max_length=5000, verbose_name='Запрос')),
-                ('state', models.CharField(default='Открытый вопрос', max_length=100, verbose_name='Состояние')),
-                ('channel_mes_id', models.BigIntegerField()),
-                ('chat_mes_id', models.BigIntegerField()),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.telegramuser', verbose_name='Пользователь')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Дата создания"
+                    ),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Дата обновления"),
+                ),
+                ("question", models.CharField(max_length=5000, verbose_name="Запрос")),
+                (
+                    "state",
+                    models.CharField(
+                        default="Открытый вопрос",
+                        max_length=100,
+                        verbose_name="Состояние",
+                    ),
+                ),
+                ("channel_mes_id", models.BigIntegerField()),
+                ("chat_mes_id", models.BigIntegerField()),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="store.telegramuser",
+                        verbose_name="Пользователь",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Заявка на покупку',
-                'verbose_name_plural': 'Заявки на покупку',
+                "verbose_name": "Заявка на покупку",
+                "verbose_name_plural": "Заявки на покупку",
             },
         ),
     ]

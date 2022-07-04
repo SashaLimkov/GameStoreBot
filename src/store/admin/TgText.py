@@ -11,7 +11,7 @@ class TextAdminForm(forms.ModelForm):
 
     class Meta:
         model = TelegramText
-        fields = '__all__'
+        fields = "__all__"
 
 
 class TelegramTextAdmin(admin.ModelAdmin):

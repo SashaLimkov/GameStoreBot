@@ -21,7 +21,7 @@ async def get_games_menu(callback_data: dict):
     keyboard = InlineKeyboardMarkup(row_width=1)
     links = await user_db.get_all_links()
     for link in links:
-        if link.link_type.name =="Игры":
+        if link.link_type.name == "Игры":
             keyboard.add(
                 await add_button(
                     text=link.name,

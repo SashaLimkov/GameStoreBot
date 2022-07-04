@@ -7,18 +7,22 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('store', '0002_linktype_linkgamelist_link_type'),
+        ("store", "0002_linktype_linkgamelist_link_type"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='linkgamelist',
-            name='link_type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.linktype', verbose_name='Тип'),
+            model_name="linkgamelist",
+            name="link_type",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="store.linktype",
+                verbose_name="Тип",
+            ),
         ),
         migrations.AlterField(
-            model_name='linkgamelist',
-            name='name',
-            field=models.CharField(max_length=100, verbose_name='Название ссылки'),
+            model_name="linkgamelist",
+            name="name",
+            field=models.CharField(max_length=100, verbose_name="Название ссылки"),
         ),
     ]

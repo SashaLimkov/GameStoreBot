@@ -9,14 +9,8 @@ from bot.services.db import consult as c_db
 
 async def game_inst(call: types.CallbackQuery):
     user_id = call.data.split("_")[-1]
-    await bot.send_message(
-        chat_id=user_id,
-        text=await td.GAME_INSTRUCTION_TEXT_ADMIN()
-    )
-    await call.answer(
-        text="Отправьте реквизиты пользователю",
-        show_alert=True
-    )
+    await bot.send_message(chat_id=user_id, text=await td.GAME_INSTRUCTION_TEXT_ADMIN())
+    await call.answer(text="Отправьте реквизиты пользователю", show_alert=True)
     user = await u_db.select_user(user_id)
     r = await u_r.select_user_request_by_user(user)
     chat = await c_db.get_consult_group()
@@ -30,14 +24,8 @@ async def game_inst(call: types.CallbackQuery):
 
 async def payment(call: types.CallbackQuery):
     user_id = call.data.split("_")[-1]
-    await bot.send_message(
-        chat_id=user_id,
-        text=await td.SUCCESS()
-    )
-    await call.answer(
-        text="Сообщение доставлено пользователю",
-        show_alert=True
-    )
+    await bot.send_message(chat_id=user_id, text=await td.SUCCESS())
+    await call.answer(text="Сообщение доставлено пользователю", show_alert=True)
     user = await u_db.select_user(user_id)
     r = await u_r.select_user_request_by_user(user)
     chat = await c_db.get_consult_group()
@@ -51,14 +39,8 @@ async def payment(call: types.CallbackQuery):
 
 async def user_phone(call: types.CallbackQuery):
     user_id = call.data.split("_")[-1]
-    await bot.send_message(
-        chat_id=user_id,
-        text=await td.PHONE()
-    )
-    await call.answer(
-        text="Сообщение доставлено пользователю",
-        show_alert=True
-    )
+    await bot.send_message(chat_id=user_id, text=await td.PHONE())
+    await call.answer(text="Сообщение доставлено пользователю", show_alert=True)
     user = await u_db.select_user(user_id)
     r = await u_r.select_user_request_by_user(user)
     chat = await c_db.get_consult_group()
@@ -72,14 +54,8 @@ async def user_phone(call: types.CallbackQuery):
 
 async def android_t(call: types.CallbackQuery):
     user_id = call.data.split("_")[-1]
-    await bot.send_message(
-        chat_id=user_id,
-        text=await td.ANROID_T()
-    )
-    await call.answer(
-        text="Сообщение доставлено пользователю",
-        show_alert=True
-    )
+    await bot.send_message(chat_id=user_id, text=await td.ANROID_T())
+    await call.answer(text="Сообщение доставлено пользователю", show_alert=True)
     user = await u_db.select_user(user_id)
     r = await u_r.select_user_request_by_user(user)
     chat = await c_db.get_consult_group()
@@ -93,14 +69,8 @@ async def android_t(call: types.CallbackQuery):
 
 async def android_a(call: types.CallbackQuery):
     user_id = call.data.split("_")[-1]
-    await bot.send_message(
-        chat_id=user_id,
-        text=await td.ANDROID_A()
-    )
-    await call.answer(
-        text="Сообщение доставлено пользователю",
-        show_alert=True
-    )
+    await bot.send_message(chat_id=user_id, text=await td.ANDROID_A())
+    await call.answer(text="Сообщение доставлено пользователю", show_alert=True)
     user = await u_db.select_user(user_id)
     r = await u_r.select_user_request_by_user(user)
     chat = await c_db.get_consult_group()
@@ -114,14 +84,8 @@ async def android_a(call: types.CallbackQuery):
 
 async def apple_t(call: types.CallbackQuery):
     user_id = call.data.split("_")[-1]
-    await bot.send_message(
-        chat_id=user_id,
-        text=await td.APPLE_T()
-    )
-    await call.answer(
-        text="Сообщение доставлено пользователю",
-        show_alert=True
-    )
+    await bot.send_message(chat_id=user_id, text=await td.APPLE_T())
+    await call.answer(text="Сообщение доставлено пользователю", show_alert=True)
     user = await u_db.select_user(user_id)
     r = await u_r.select_user_request_by_user(user)
     chat = await c_db.get_consult_group()
@@ -135,14 +99,8 @@ async def apple_t(call: types.CallbackQuery):
 
 async def apple_a(call: types.CallbackQuery):
     user_id = call.data.split("_")[-1]
-    await bot.send_message(
-        chat_id=user_id,
-        text=await td.APPLE_A()
-    )
-    await call.answer(
-        text="Сообщение доставлено пользователю",
-        show_alert=True
-    )
+    await bot.send_message(chat_id=user_id, text=await td.APPLE_A())
+    await call.answer(text="Сообщение доставлено пользователю", show_alert=True)
     user = await u_db.select_user(user_id)
     r = await u_r.select_user_request_by_user(user)
     chat = await c_db.get_consult_group()
@@ -156,14 +114,8 @@ async def apple_a(call: types.CallbackQuery):
 
 async def subs(call: types.CallbackQuery):
     user_id = call.data.split("_")[-1]
-    await bot.send_message(
-        chat_id=user_id,
-        text=await td.SUBSCRIPTiON_INSTRUCTION()
-    )
-    await call.answer(
-        text="Сообщение доставлено пользователю",
-        show_alert=True
-    )
+    await bot.send_message(chat_id=user_id, text=await td.SUBSCRIPTiON_INSTRUCTION())
+    await call.answer(text="Сообщение доставлено пользователю", show_alert=True)
     user = await u_db.select_user(user_id)
     r = await u_r.select_user_request_by_user(user)
     chat = await c_db.get_consult_group()
@@ -181,10 +133,7 @@ async def write(call: types.CallbackQuery):
         chat_id=user_id,
         text=await td.WRITE(),
     )
-    await call.answer(
-        text="Сообщение доставлено пользователю",
-        show_alert=True
-    )
+    await call.answer(text="Сообщение доставлено пользователю", show_alert=True)
     user = await u_db.select_user(user_id)
     r = await u_r.select_user_request_by_user(user)
     chat = await c_db.get_consult_group()
@@ -198,14 +147,8 @@ async def write(call: types.CallbackQuery):
 
 async def subs_and(call: types.CallbackQuery):
     user_id = call.data.split("_")[-1]
-    await bot.send_message(
-        chat_id=user_id,
-        text=await td.SUBS_ANDROID()
-    )
-    await call.answer(
-        text="Сообщение доставлено пользователю",
-        show_alert=True
-    )
+    await bot.send_message(chat_id=user_id, text=await td.SUBS_ANDROID())
+    await call.answer(text="Сообщение доставлено пользователю", show_alert=True)
     user = await u_db.select_user(user_id)
     r = await u_r.select_user_request_by_user(user)
     chat = await c_db.get_consult_group()
@@ -219,14 +162,8 @@ async def subs_and(call: types.CallbackQuery):
 
 async def subs_app(call: types.CallbackQuery):
     user_id = call.data.split("_")[-1]
-    await bot.send_message(
-        chat_id=user_id,
-        text=await td.SUBS_APPLE()
-    )
-    await call.answer(
-        text="Сообщение доставлено пользователю",
-        show_alert=True
-    )
+    await bot.send_message(chat_id=user_id, text=await td.SUBS_APPLE())
+    await call.answer(text="Сообщение доставлено пользователю", show_alert=True)
     user = await u_db.select_user(user_id)
     r = await u_r.select_user_request_by_user(user)
     chat = await c_db.get_consult_group()
@@ -245,9 +182,7 @@ async def update_msg(user):
     chat_id = group.chanel_id
     try:
         await bot.edit_message_text(
-            chat_id=chat_id,
-            message_id=u_req.channel_mes_id,
-            text=text
+            chat_id=chat_id, message_id=u_req.channel_mes_id, text=text
         )
     except:
         pass
