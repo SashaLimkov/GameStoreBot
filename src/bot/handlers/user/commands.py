@@ -22,7 +22,7 @@ async def send_main_menu(message: types.Message, state: FSMContext):
         await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=message.message_id,
-            text=await td.START_MESSAGE(),
+            text= await td.START_MESSAGE(),
             reply_markup=await ik.get_main_menu(),
             disable_web_page_preview=True,
         )

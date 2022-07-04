@@ -4,7 +4,8 @@ from ..models import LinkGameList
 
 
 class LinksAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "link")
+    list_display = ("name", "link", "link_type")
+    list_display_links = ("name",)
 
 
 # Register your models here.

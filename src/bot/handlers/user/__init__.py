@@ -16,6 +16,9 @@ def setup(dp: Dispatcher):
         games.get_instruction, cd.GAME_INSTRUCTION.filter(), state=UserState.static
     )
     dp.register_callback_query_handler(
+        subscription.get_instruction, cd.SUBS_INSTRUCTION.filter(), state=UserState.static
+    )
+    dp.register_callback_query_handler(
         subscription.subscriptions_menu,
         cd.MAIN_MENU.filter(user_choice="s"),
         state=UserState.static,
@@ -26,8 +29,9 @@ def setup(dp: Dispatcher):
     dp.register_callback_query_handler(commands.get_mm, filters.Text("back"), state=UserState.static)
     dp.register_message_handler(
         sell_process.wait_for_answer,
-        lambda message: "хочу" in message.text.lower(),
-        state=UserState.static
+        lambda
+            message: "хочу" in message.text.lower() or "можно" in message.text.lower() or "давай купим" in message.text.lower(),
+          state=UserState.static
     )
     # dp.register_message_handler(
     #     sell_process.wait_for_answer,

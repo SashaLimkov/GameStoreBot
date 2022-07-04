@@ -52,8 +52,20 @@ class LinkGameList(TimeBasedModel):
         return self.name
 
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100, unique=True, verbose_name="Название ссылки")
+    name = models.CharField(max_length=100, verbose_name="Название ссылки")
     link = models.CharField(max_length=2000, unique=True, verbose_name="Ссылка")
+    link_type = models.ForeignKey("LinkType", on_delete=models.CASCADE, verbose_name="Тип")
+
+
+class LinkType(TimeBasedModel):
+    class Meta:
+        verbose_name = "Тип Ссылки"
+        verbose_name_plural = "Типы Ссылок"
+
+    def __str__(self):
+        return self.name
+
+    name = models.CharField(max_length=100, unique=True, verbose_name="Тип ссылки")
 
 
 class ConsultantGroup(TimeBasedModel):

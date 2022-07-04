@@ -18,8 +18,8 @@ async def SUBSCRIPTIONS_LIST():
     return await t_db.get_content_by_title("Список подписок")
 
 
-async def GAME_INSTRUCTION_TEXT():
-    return await t_db.get_content_by_title("Инструкция по активации ключей")
+async def GAME_INSTRUCTION_TEXT_ADMIN():
+    return await t_db.get_content_by_title("игры инструкция")
 
 
 async def BUY_GAME():
@@ -32,6 +32,54 @@ async def POST_FORM() -> str:
 
 async def CONSULTER_INSTRUCTION() -> str:
     return await t_db.get_content_by_title("Инструкция для консультанта")
+
+
+async def GAME_INSTRUCTION_TEXT() -> str:
+    return await t_db.get_content_by_title("Инструкция по активации ключей")
+
+
+async def SUCCESS() -> str:
+    return await t_db.get_content_by_title("оплата прошла")
+
+
+async def PHONE() -> str:
+    return await t_db.get_content_by_title("какой телефон")
+
+
+async def ANROID_T() -> str:
+    return await t_db.get_content_by_title("андроид турция")
+
+
+async def APPLE_T() -> str:
+    return await t_db.get_content_by_title("айфон турция")
+
+
+async def APPLE_A() -> str:
+    return await t_db.get_content_by_title("айфон аргентина")
+
+
+async def ANDROID_A() -> str:
+    return await t_db.get_content_by_title("андроид аргентина")
+
+
+async def SUBS_ANDROID() -> str:
+    return await t_db.get_content_by_title("Подписки android")
+
+
+async def SUBS_APPLE() -> str:
+    return await t_db.get_content_by_title("Подписки apple")
+
+
+async def WRITE() -> str:
+    return await t_db.get_content_by_title("Активируй, пиши")
+
+
+async def SUBSCRIPTiON_INSTRUCTION() -> str:
+    return await t_db.get_content_by_title("подписки инструкция")
+
+
+async def SUBSCRIPTiON_INSTRUCTION_USER() -> str:
+    return await t_db.get_content_by_title("Инструкция по активации подписок")
 
 
 ADMIN_PANEL = (
@@ -48,6 +96,7 @@ ADD_LINK = (
 )
 SHOW_LINKS = "Доступные списки игр"
 GAME_INSTRUCTION = "Инструкция по активации ключей"
+SUBS_INSTRUCTION = "Инструкция по активации ключей"
 
 BACK_TO_MM = "◀ Назад"
 BACK_TO_MM_CD = "back"

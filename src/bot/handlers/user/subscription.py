@@ -22,6 +22,17 @@ async def subscriptions_menu(
     )
 
 
+async def get_instruction(
+    call: types.CallbackQuery, callback_data: dict, state: FSMContext
+):
+    await bot.edit_message_text(
+        chat_id=call.message.chat.id,
+        message_id=call.message.message_id,
+        text=await td.SUBSCRIPTiON_INSTRUCTION_USER(),
+        reply_markup=await ik.back(callback_data),
+    )
+
+
 async def get_subs_list(
     call: types.CallbackQuery, callback_data: dict, state: FSMContext
 ):

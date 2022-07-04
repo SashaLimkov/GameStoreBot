@@ -20,7 +20,7 @@ def select_user_request_by_mes_id(mes_id):
 
 @sync_to_async
 def select_user_request_by_user(user):
-    return UserRequest.objects.filter(user=user, state="Открытый вопрос").get()
+    return UserRequest.objects.filter(user=user, state="Открытый вопрос").first()
 
 
 @sync_to_async
@@ -31,3 +31,7 @@ def update_chat_mes_id(pk, chat_mes_id):
 @sync_to_async
 def select_user_request_by_chat_mes_id(chat_mes_id):
     return UserRequest.objects.filter(chat_mes_id=chat_mes_id).get()
+
+@sync_to_async
+def update_state(user):
+    return UserRequest.objects.filter(user=user).update(state="Завершенная продажа")

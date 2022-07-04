@@ -21,12 +21,13 @@ async def get_games_menu(callback_data: dict):
     keyboard = InlineKeyboardMarkup(row_width=1)
     links = await user_db.get_all_links()
     for link in links:
-        keyboard.add(
-            await add_button(
-                text=link.name,
-                url=link.link,
+        if link.link_type.name =="Игры":
+            keyboard.add(
+                await add_button(
+                    text=link.name,
+                    url=link.link,
+                )
             )
-        )
     keyboard.add(
         await add_button(
             text=td.GAME_INSTRUCTION,
@@ -41,10 +42,23 @@ async def get_games_menu(callback_data: dict):
 
 async def get_subs_menu(callback_data: dict):
     keyboard = InlineKeyboardMarkup(row_width=1)
+    links = await user_db.get_all_links()
+
+    for link in links:
+        if link.link_type.name == "Подписки":
+            print(link.link_type)
+            keyboard.add(
+                await add_button(
+                    text=link.name,
+                    url=link.link,
+                )
+            )
     keyboard.add(
         await add_button(
-            text="Список подписок",
-            cd=cd.SUBS_MENU.new(user_choice=callback_data["user_choice"], s_list=1),
+            text=td.SUBS_INSTRUCTION,
+            cd=cd.SUBS_INSTRUCTION.new(
+                user_choice=callback_data["user_choice"], instruction=1
+            ),
         )
     )
     keyboard.add(await add_button(text=td.BACK_TO_MM, cd=td.BACK_TO_MM_CD))
