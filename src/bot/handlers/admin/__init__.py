@@ -52,7 +52,10 @@ def setup(dp: Dispatcher):
     dp.register_message_handler(
         links.finish_adding_link, is_admin=True, state=UserState.add_link
     )
-    dp.register_message_handler(sell_process.add_admin_menu, lambda message: "forward_from_message_id" in message)
+    dp.register_message_handler(
+        sell_process.add_admin_menu,
+        lambda message: "forward_from_message_id" in message,
+    )
 
     dp.register_message_handler(
         sell_process.add_admin_text_message,
@@ -65,4 +68,3 @@ def setup(dp: Dispatcher):
         content_types=ContentTypes.PHOTO,
         state="*",
     )
-

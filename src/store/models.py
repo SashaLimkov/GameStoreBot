@@ -6,10 +6,7 @@ class TimeBasedModel(models.Model):
     class Meta:
         abstract = True
 
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name="Дата создания"
-    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
 
@@ -31,9 +28,7 @@ class UserRequest(TimeBasedModel):
         verbose_name_plural = "Заявки на покупку"
 
     user = models.ForeignKey(
-        TelegramUser,
-        on_delete=models.CASCADE,
-        verbose_name="Пользователь"
+        TelegramUser, on_delete=models.CASCADE, verbose_name="Пользователь"
     )
     question = models.CharField(max_length=5000, verbose_name="Запрос")
     state = models.CharField(
@@ -54,7 +49,9 @@ class LinkGameList(TimeBasedModel):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, verbose_name="Название ссылки")
     link = models.CharField(max_length=2000, unique=True, verbose_name="Ссылка")
-    link_type = models.ForeignKey("LinkType", on_delete=models.CASCADE, verbose_name="Тип")
+    link_type = models.ForeignKey(
+        "LinkType", on_delete=models.CASCADE, verbose_name="Тип"
+    )
 
 
 class LinkType(TimeBasedModel):
@@ -88,8 +85,6 @@ class TelegramText(TimeBasedModel):
     def __str__(self):
         return self.title
 
-    title = models.CharField(
-        max_length=150, verbose_name="Наименование"
-    )
+    title = models.CharField(max_length=150, verbose_name="Наименование")
     content = models.TextField(blank=True, verbose_name="Контент")
     ordering = ["-created_at", "title"]

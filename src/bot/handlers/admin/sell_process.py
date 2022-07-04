@@ -11,15 +11,16 @@ from bot.keyboards import inline as ik
 
 
 async def add_admin_menu(message: types.Message):
-    r: UserRequest = await u_r.select_user_request_by_mes_id(message.forward_from_message_id)
+    r: UserRequest = await u_r.select_user_request_by_mes_id(
+        message.forward_from_message_id
+    )
     if r:
         await u_r.update_chat_mes_id(r.pk, message.message_id)
         mes = await bot.send_message(
             chat_id=message.chat.id,
             reply_to_message_id=message.message_id,
             text=await td.CONSULTER_INSTRUCTION(),
-            reply_markup=await ik.consult_quick_menu(r.user.user_id)
-
+            reply_markup=await ik.consult_quick_menu(r.user.user_id),
         )
         user_data.update({r.user.user_id: {"last": mes.message_id}})
         print(user_data)
@@ -42,7 +43,7 @@ async def add_admin_text_message(message: types.Message, state: FSMContext):
             await bot.edit_message_text(
                 chat_id=chat_id,
                 message_id=u_req.channel_mes_id,
-                text=text + "\n<b>ПОКУПКА ЗАВЕРШЕНА</b>"
+                text=text + "\n<b>ПОКУПКА ЗАВЕРШЕНА</b>",
             )
         except:
             pass
@@ -59,9 +60,7 @@ async def add_admin_text_message(message: types.Message, state: FSMContext):
     group = await consult_db.get_consult_group()
     chat_id = group.chanel_id
     await bot.edit_message_text(
-        chat_id=chat_id,
-        message_id=u_req.channel_mes_id,
-        text=text
+        chat_id=chat_id, message_id=u_req.channel_mes_id, text=text
     )
 
 
@@ -79,15 +78,15 @@ async def add_admin_photo_message(message: types.Message):
 
     try:
         await bot.edit_message_text(
-            chat_id=chat_id,
-            message_id=u_req.channel_mes_id,
-            text=text
+            chat_id=chat_id, message_id=u_req.channel_mes_id, text=text
         )
     except:
         pass
 
 
 async def get_message_data(message: types.Message):
-    u_req: UserRequest = await u_r.select_user_request_by_chat_mes_id(message.reply_to_message.message_id)
+    u_req: UserRequest = await u_r.select_user_request_by_chat_mes_id(
+        message.reply_to_message.message_id
+    )
     user: TelegramUser = u_req.user
     return user
