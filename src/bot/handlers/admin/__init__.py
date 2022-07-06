@@ -16,7 +16,6 @@ def setup(dp: Dispatcher):
     dp.register_message_handler(
         commands.set_consult_group,
         filters.Command("setup_cg"),
-        lambda message: message.from_user.id in ADMINS,
         state="*",
     )
     dp.register_message_handler(
