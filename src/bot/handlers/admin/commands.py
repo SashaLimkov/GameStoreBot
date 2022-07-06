@@ -2,6 +2,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.utils.exceptions import MessageToEditNotFound, MessageCantBeEdited
 
+from bot.config.config import ADMINS
 from bot.config.loader import bot
 from bot.services.db.consult import add_consult_group
 from bot.states import UserState
@@ -70,11 +71,12 @@ async def delete_commands(message: types.Message, state: FSMContext):
 
 
 async def set_consult_group(message: types.Message, state: FSMContext):
-    chanel_id = message.reply_to_message.sender_chat.id
-    chat_id = message.chat.id
-    await add_consult_group(chat_id=chat_id, chanel_id=chanel_id)
-    await bot.send_message(
-        chat_id=chanel_id,
-        text="Данная группа была установлена как группа админов.\n"
-        "Здесь будут появляться заявки от пользователей на приобретение.",
-    )
+    if message.from_user.id in ADMINS:
+        chanel_id = message.reply_to_message.sender_chat.id
+        chat_id = message.chat.id
+        await add_consult_group(chat_id=chat_id, chanel_id=chanel_id)
+        await bot.send_message(
+            chat_id=chanel_id,
+            text="Данная группа была установлена как группа админов.\n"
+            "Здесь будут появляться заявки от пользователей на приобретение.",
+        )
